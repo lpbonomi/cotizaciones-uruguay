@@ -14,7 +14,8 @@ export async function obtenerUltimoCierre(cache: boolean = true) {
     const client = await getSoapClient('awsultimocierre');
     const [result] = await client.ExecuteAsync({});
 
-    const date = result.Salida.Fecha
+    // Format the date to YYYY-MM-DD
+    const date = (new Date(result.Salida.Fecha)).toISOString().split('T')[0];
 
     if (cache) {
         cachePut(db, date);

@@ -26,7 +26,7 @@ export async function obtenerUltimoCierre(cache: boolean = true) {
 
 function cacheGet(db: Database) {
     const date = db.query(`
-        SELECT date FROM ulimo_cierre
+        SELECT date FROM ultimo_cierre
         WHERE (date = DATE('now', '-3 hours'))
         OR (last_modified > DATETIME('now', '-30 minutes'));
     `).get() as { date: string } | null;
@@ -36,7 +36,7 @@ function cacheGet(db: Database) {
 
 function cachePut(db: Database, date: string): void {
     db.query(`
-        INSERT INTO ulimo_cierre (date)
+        INSERT INTO ultimo_cierre (date)
         VALUES (?);
     `).run(date);
 }

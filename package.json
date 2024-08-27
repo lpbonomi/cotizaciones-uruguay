@@ -15,7 +15,9 @@
   "scripts": {
     "build": "tsc",
     "ci": "bun run build && bun run check-exports",
-    "check-exports": "attw --pack ."
+    "check-exports": "attw --pack .",
+    "local-release": "changeset version && changeset publish",
+    "prepublishOnly": "npm run ci"
   },
   "homepage": "https://github.com/lpbonomi/cotizaciones-bcu",
   "bugs": {
@@ -37,6 +39,7 @@
   "module": "src/index.ts",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.15.4",
+    "@changesets/cli": "^2.27.7",
     "@types/bun": "latest"
   },
   "peerDependencies": {

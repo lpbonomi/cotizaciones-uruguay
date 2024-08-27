@@ -1,5 +1,5 @@
-import { getSoapClient } from './soapClient';
-import { obtenerUltimoCierre } from './ultimoCierre';
+import { getSoapClient } from './soapClient.js';
+import { obtenerUltimoCierre } from './ultimoCierre.js';
 
 interface WsBcuCotizacionesIn {
     Moneda: Array<{

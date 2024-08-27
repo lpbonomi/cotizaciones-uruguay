@@ -1,5 +1,5 @@
-import { getDb } from './db';
-import { getSoapClient } from './soapClient';
+import { getDb } from './db.js';
+import { getSoapClient } from './soapClient.js';
 import { Database } from "bun:sqlite";
 
 export async function obtenerUltimoCierre(cache: boolean = true) {

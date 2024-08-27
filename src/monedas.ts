@@ -1,4 +1,4 @@
-import { getSoapClient } from './soapClient';
+import { getSoapClient } from './soapClient.js';
 
 const groups = {
     'INTERNATIONAL': 1,

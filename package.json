@@ -1,8 +1,42 @@
 {
   "name": "cotizaciones-bcu",
-  "module": "index.ts",
+  "version": "1.0.0",
+  "description": "Adaptador de WebServices del BCU para JavaScript",
+  "keywords": [
+    "bcu",
+    "webservice",
+    "soap",
+    "typescript",
+    "cotizaciones",
+    "monedas",
+    "Uruguay"
+  ],
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "ci": "bun run build && bun run check-exports",
+    "check-exports": "attw --pack ."
+  },
+  "homepage": "https://github.com/lpbonomi/cotizaciones-bcu",
+  "bugs": {
+    "url": "https://github.com/lpbonomi/cotizaciones-bcu/issues"
+  },
+  "author": {
+    "name": "Luis Pedro Bonomi",
+    "url": "https://github.com/lpbonomi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lpbonomi/cotizaciones-bcu.git"
+  },
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "module": "src/index.ts",
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.15.4",
     "@types/bun": "latest"
   },
   "peerDependencies": {

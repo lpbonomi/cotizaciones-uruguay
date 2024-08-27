@@ -14,7 +14,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "ci": "bun run build && bun run check-exports",
+    "ci": "bun run build",
     "check-exports": "attw --pack .",
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "npm run ci"

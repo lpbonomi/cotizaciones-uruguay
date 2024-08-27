@@ -1,6 +1,6 @@
 # Adaptador de WebServices del BCU para TypeScript
 
-Una herramienta para obtener tipos de cambio oficiales para varias monedas extraídos de los WebServices del [Banco Central del Uruguay](http://www.bcu.gub.uy/).
+Una herramienta inspirada fuertemente en [biller/bcu](https://github.com/biller/bcu) para obtener tipos de cambio oficiales para varias monedas extraídos de los WebServices del [Banco Central del Uruguay](http://www.bcu.gub.uy/).
 
 Los WebServices utilizados son
 [awsultimocierre](https://cotizaciones.bcu.gub.uy/wscotizaciones/servlet/awsultimocierre?wsdl),

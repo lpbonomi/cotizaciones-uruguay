@@ -1,5 +1,11 @@
 # cotizaciones-bcu
 
+## 1.0.3
+
+### Patch Changes
+
+- ba34636: Credits to Biller
+
 ## 1.0.2
 
 ### Patch Changes

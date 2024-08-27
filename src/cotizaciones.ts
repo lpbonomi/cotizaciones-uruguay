@@ -22,21 +22,18 @@ interface Result {
     FormaArbitrar: number;
 }
 
-export async function obtenerCotizaciones({
-    Moneda = [{ item: 2225 }],
-    Grupo = 0,
-    ...restOfParams
-}: Partial<WsBcuCotizacionesIn>) {
+export async function obtenerCotizaciones(params: Partial<WsBcuCotizacionesIn> = {}) {
+
     const client = await getSoapClient('awsbcucotizaciones');
 
     const ultimoCierre = await obtenerUltimoCierre();
 
     const [result] = await client.ExecuteAsync({
         Entrada: {
-            Moneda,
-            Grupo,
-            FechaDesde: restOfParams.FechaDesde || ultimoCierre,
-            FechaHasta: restOfParams.FechaHasta || ultimoCierre,
+            Moneda: params.Moneda ?? [{ item: 2225 }],
+            Grupo: params.Grupo ?? 0,
+            FechaDesde: params.FechaDesde || ultimoCierre,
+            FechaHasta: params.FechaHasta || ultimoCierre,
         }
     });
 
@@ -61,7 +58,6 @@ export type ErrorMessage = typeof errorCodes[ErrorCode];
 
 function handleError(result: any) {
     const status = result.Salida.respuestastatus;
-    console.log(status);
     if (status.codigoerror === 0) {
         return
     }

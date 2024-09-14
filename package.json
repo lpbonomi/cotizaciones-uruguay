@@ -1,6 +1,6 @@
 {
   "name": "cotizaciones-bcu",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Adaptador de WebServices del BCU para JavaScript",
   "keywords": [
     "bcu",

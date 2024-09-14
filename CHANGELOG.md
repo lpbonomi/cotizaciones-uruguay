@@ -1,5 +1,11 @@
 # cotizaciones-bcu
 
+## 1.0.5
+
+### Patch Changes
+
+- 0487a08: Fix abrir db
+
 ## 1.0.4
 
 ### Patch Changes

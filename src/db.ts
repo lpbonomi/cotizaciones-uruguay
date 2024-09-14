@@ -2,7 +2,7 @@ import { Database } from "bun:sqlite";
 import path from "path";
 
 export function getDb() {
-    const dbPath = path.join(__dirname, 'data', 'cache.db');
+    const dbPath = path.join(import.meta.url, '..', 'cache.db');
     const db = new Database(dbPath, { create: true });
     db.query(`
         CREATE TABLE IF NOT EXISTS ultimo_cierre (

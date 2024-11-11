@@ -1,5 +1,11 @@
 # cotizaciones-bcu
 
+## 2.0.0
+
+### Major Changes
+
+- 6a1386a: Eliminada opción de cache
+
 ## 1.0.5
 
 ### Patch Changes

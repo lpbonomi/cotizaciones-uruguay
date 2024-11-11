@@ -27,10 +27,6 @@ typescript
 import { obtenerUltimoCierre } from './src/ultimoCierre';
 const fechaUltimoCierre = await obtenerUltimoCierre();
 
-#### Parámetros
-
-- `cache` (opcional): Booleano para habilitar/deshabilitar el caché (por defecto: `true`)
-
 #### Retorna
 
 Una cadena que representa la última fecha de cierre en formato 'YYYY-MM-DD'.

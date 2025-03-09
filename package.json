@@ -1,7 +1,7 @@
 {
-  "name": "cotizaciones-bcu",
-  "version": "2.0.0",
-  "description": "Adaptador de WebServices del BCU para JavaScript",
+  "name": "cotizaciones-uruguay",
+  "version": "1.0.0",
+  "description": "Cotizaciones de bancos en Uruguay",
   "keywords": [
     "bcu",
     "webservice",
@@ -19,9 +19,9 @@
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "npm run ci"
   },
-  "homepage": "https://github.com/lpbonomi/cotizaciones-bcu",
+  "homepage": "https://github.com/lpbonomi/cotizaciones-uruguay",
   "bugs": {
-    "url": "https://github.com/lpbonomi/cotizaciones-bcu/issues"
+    "url": "https://github.com/lpbonomi/cotizaciones-uruguay/issues"
   },
   "author": {
     "name": "Luis Pedro Bonomi",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lpbonomi/cotizaciones-bcu.git"
+    "url": "https://github.com/lpbonomi/cotizaciones-uruguay.git"
   },
   "license": "MIT",
   "files": [
@@ -40,12 +40,15 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.15.4",
     "@changesets/cli": "^2.27.7",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/jsdom": "^21.1.7"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "soap": "^1.1.2"
+    "jsdom": "^26.0.0",
+    "soap": "^1.1.2",
+    "zod": "^3.24.2"
   }
 }

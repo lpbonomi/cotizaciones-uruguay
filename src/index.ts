@@ -1,3 +1,20 @@
-export { obtenerUltimoCierre } from "./ultimoCierre.js";
-export { obtenerMonedas } from "./monedas.js";
-export { obtenerCotizaciones, type ErrorMessage } from "./cotizaciones.js";
+import { obtenerUltimoCierre } from "./bcu/ultimoCierre.js";
+import { obtenerMonedas } from "./bcu/monedas.js";
+import {
+  obtenerCotizaciones as obtenerCotizacionesBcu,
+  type BcuErrorMessage,
+} from "./bcu/cotizaciones.js";
+
+import { obtenerCotizaciones as obtenerCotizacionesItau } from "./itau/index.js";
+
+export type { BcuErrorMessage };
+
+export const bcu = {
+  obtenerUltimoCierre,
+  obtenerMonedas,
+  obtenerCotizaciones: obtenerCotizacionesBcu,
+};
+
+export const itau = {
+  obtenerCotizaciones: obtenerCotizacionesItau,
+};

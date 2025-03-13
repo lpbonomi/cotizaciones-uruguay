@@ -1,6 +1,6 @@
 {
   "name": "cotizaciones-uruguay",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cotizaciones de bancos en Uruguay",
   "keywords": [
     "bcu",
@@ -9,7 +9,9 @@
     "typescript",
     "cotizaciones",
     "monedas",
-    "Uruguay"
+    "Uruguay",
+    "bancos",
+    "Itaú"
   ],
   "main": "dist/index.js",
   "scripts": {

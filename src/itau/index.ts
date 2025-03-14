@@ -3,8 +3,12 @@ import { z } from "zod";
 
 const CotizacionSchema = z.object({
   moneda: z.string(),
-  compra: z.string(),
-  venta: z.string(),
+  compra: z.coerce
+    .string()
+    .transform((val) => parseFloat(val.replace(",", "."))),
+  venta: z.coerce
+    .string()
+    .transform((val) => parseFloat(val.replace(",", "."))),
 });
 
 type SuccessResponse = {
@@ -13,7 +17,7 @@ type SuccessResponse = {
     fecha: string;
     cotizaciones: Record<
       (typeof currencyMap)[keyof typeof currencyMap],
-      { compra: string; venta: string }
+      { compra: number; venta: number }
     >;
   };
 };
@@ -48,28 +52,32 @@ export async function obtenerCotizaciones(): Promise<Response> {
     const fecha = root.querySelector("fecha");
     const cotizaciones = root.querySelectorAll("cotizacion");
 
-    const cotizacionesObject = Array.from(cotizaciones).reduce(
-      (acc, cotizacion) => {
-        const moneda = cotizacion.querySelector("moneda")?.textContent;
-        const compra = cotizacion.querySelector("compra")?.textContent;
-        const venta = cotizacion.querySelector("venta")?.textContent;
+    let cotizacionesObject: SuccessResponse["result"]["cotizaciones"];
+    try {
+      cotizacionesObject = Array.from(cotizaciones).reduce(
+        (acc, cotizacion) => {
+          const moneda = cotizacion.querySelector("moneda")?.textContent;
+          const compra = cotizacion.querySelector("compra")?.textContent;
+          const venta = cotizacion.querySelector("venta")?.textContent;
 
-        if (moneda && compra && venta) {
-          try {
+          if (moneda && compra && venta) {
             const validated = CotizacionSchema.parse({ moneda, compra, venta });
             acc[currencyMap[moneda as keyof typeof currencyMap]] = {
               compra: validated.compra,
               venta: validated.venta,
             };
-          } catch (error) {
-            console.warn(`Invalid cotización for ${moneda}:`, error);
           }
-        }
 
-        return acc;
-      },
-      {} as SuccessResponse["result"]["cotizaciones"]
-    );
+          return acc;
+        },
+        {} as SuccessResponse["result"]["cotizaciones"]
+      );
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : "Error desconocido",
+      };
+    }
 
     const dateStr = fecha?.textContent;
     if (!dateStr) {

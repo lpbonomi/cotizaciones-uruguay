@@ -1,5 +1,11 @@
 # cotizaciones-uruguay
 
+## 1.1.2
+
+### Patch Changes
+
+- efaad12: Arreglo zona horaria
+
 ## 1.1.1
 
 ### Patch Changes

@@ -15,15 +15,24 @@ const dateSchema = z
   .string()
   .regex(/^\d{14}$/)
   .transform((date) => {
-    const year = Number(date.slice(0, 4));
-    const month = Number(date.slice(4, 6));
-    const day = Number(date.slice(6, 8));
-    const hour = Number(date.slice(8, 10));
-    const minute = Number(date.slice(10, 12));
-    const second = Number(date.slice(12, 14));
+    const year = date.slice(0, 4);
+    const month = date.slice(4, 6);
+    const day = date.slice(6, 8);
+    const hour = date.slice(8, 10);
+    const minute = date.slice(10, 12);
+    const second = date.slice(12, 14);
 
     return new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}`);
   });
+
+const currencyMap = {
+  "US.D": "usd",
+  ARGP: "ars",
+  CRUZ: "brl",
+  "EUR ": "eur",
+  URGI: "uyu",
+  LINK: "link",
+} as const;
 
 type SuccessResponse = {
   success: true;
@@ -127,12 +136,3 @@ export async function obtenerCotizaciones(): Promise<Response> {
     };
   }
 }
-
-const currencyMap = {
-  "US.D": "usd",
-  ARGP: "ars",
-  CRUZ: "brl",
-  "EUR ": "eur",
-  URGI: "uyu",
-  LINK: "link",
-} as const;

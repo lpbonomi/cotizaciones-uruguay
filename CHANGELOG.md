@@ -1,5 +1,11 @@
 # cotizaciones-uruguay
 
+## 1.1.1
+
+### Patch Changes
+
+- aa8f87f: Fix al parsear fecha
+
 ## 1.1.0
 
 ### Minor Changes

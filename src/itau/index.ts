@@ -11,10 +11,24 @@ const CotizacionSchema = z.object({
     .transform((val) => parseFloat(val.replace(",", "."))),
 });
 
+const dateSchema = z
+  .string()
+  .regex(/^\d{14}$/)
+  .transform((date) => {
+    const year = Number(date.slice(0, 4));
+    const month = Number(date.slice(4, 6));
+    const day = Number(date.slice(6, 8));
+    const hour = Number(date.slice(8, 10));
+    const minute = Number(date.slice(10, 12));
+    const second = Number(date.slice(12, 14));
+
+    return new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}`);
+  });
+
 type SuccessResponse = {
   success: true;
   result: {
-    fecha: string;
+    fecha: Date;
     cotizaciones: Record<
       (typeof currencyMap)[keyof typeof currencyMap],
       { compra: number; venta: number }
@@ -87,14 +101,19 @@ export async function obtenerCotizaciones(): Promise<Response> {
       };
     }
 
-    const year = dateStr.slice(0, 4);
-    const month = dateStr.slice(4, 6);
-    const day = dateStr.slice(6, 8);
+    const date = dateSchema.safeParse(dateStr);
+
+    if (!date.success) {
+      return {
+        success: false,
+        error: "Fecha no válida en la respuesta",
+      };
+    }
 
     return {
       success: true,
       result: {
-        fecha: `${year}-${month}-${day}`,
+        fecha: date.data,
         cotizaciones: cotizacionesObject,
       },
     };

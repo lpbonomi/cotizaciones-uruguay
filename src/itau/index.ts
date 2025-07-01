@@ -22,7 +22,13 @@ const dateSchema = z
     const minute = date.slice(10, 12);
     const second = date.slice(12, 14);
 
-    return new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}`);
+    // The timestamp provided by Itaú corresponds to local time in Uruguay (UTC
+    // -03). By appending the fixed offset to the ISO string we ensure the
+    // generated Date represents the same instant regardless of the server's
+    // own timezone configuration.
+    return new Date(
+      `${year}-${month}-${day}T${hour}:${minute}:${second}-03:00`
+    );
   });
 
 const currencyMap = {
